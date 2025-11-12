@@ -240,7 +240,7 @@ export default function App() {
         <div className="ml-auto flex items-center gap-2 w-full max-w-md">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-            <Input className="pl-9 pr-3" placeholder="Search warehouses, vessels, cargo, port..." value={query} onChange={(e) => setQuery(e.target.value)} />
+            <Input className="pl-9 pr-3" placeholder="Search warehouses, vessels, cargo, port..." value={query} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)} />
           </div>
           <Button variant={editMode ? "default" : "secondary"} onClick={() => setEditMode((v) => !v)}>
             {editMode ? <Save className="w-4 h-4 mr-2" /> : <Edit className="w-4 h-4 mr-2" />}
@@ -370,11 +370,11 @@ function AddWarehouse({ onAdd }: { onAdd: (w: Omit<WarehouseT, 'id'>) => void })
       <DialogContent className="rounded-2xl p-4">
         <DialogHeader><DialogTitle>Add Warehouse</DialogTitle></DialogHeader>
         <div className="space-y-3">
-          <Input placeholder="Name" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} />
-          <Input placeholder="Location" value={draft.location} onChange={(e) => setDraft({ ...draft, location: e.target.value })} />
+          <Input placeholder="Name" value={draft.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, name: e.target.value })} />
+          <Input placeholder="Location" value={draft.location} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, location: e.target.value })} />
           <div className="grid grid-cols-2 gap-2">
-            <Input type="number" placeholder="Capacity (t)" value={draft.capacityTons} onChange={(e) => setDraft({ ...draft, capacityTons: Number(e.target.value || 0) })} />
-            <Input type="number" placeholder="Used (t)" value={draft.usedTons} onChange={(e) => setDraft({ ...draft, usedTons: Number(e.target.value || 0) })} />
+            <Input type="number" placeholder="Capacity (t)" value={draft.capacityTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, capacityTons: Number(e.target.value || 0) })} />
+            <Input type="number" placeholder="Used (t)" value={draft.usedTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, usedTons: Number(e.target.value || 0) })} />
           </div>
           <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as WarehouseT['status'] })}>
             <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
@@ -404,11 +404,11 @@ function EditWarehouse({ warehouse, onSave, onDelete }: { warehouse: WarehouseT;
         <SheetContent side="bottom" className="rounded-t-3xl p-4 max-h-[80vh] overflow-y-auto">
           <SheetHeader><SheetTitle>Edit Warehouse</SheetTitle><SheetDescription>Update capacity, usage, and status.</SheetDescription></SheetHeader>
           <div className="space-y-3 mt-2">
-            <Input placeholder="Name" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} />
-            <Input placeholder="Location" value={draft.location} onChange={(e) => setDraft({ ...draft, location: e.target.value })} />
+            <Input placeholder="Name" value={draft.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, name: e.target.value })} />
+            <Input placeholder="Location" value={draft.location} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, location: e.target.value })} />
             <div className="grid grid-cols-2 gap-2">
-              <Input type="number" placeholder="Capacity (t)" value={draft.capacityTons} onChange={(e) => setDraft({ ...draft, capacityTons: Number(e.target.value || 0) })} />
-              <Input type="number" placeholder="Used (t)" value={draft.usedTons} onChange={(e) => setDraft({ ...draft, usedTons: Number(e.target.value || 0) })} />
+              <Input type="number" placeholder="Capacity (t)" value={draft.capacityTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, capacityTons: Number(e.target.value || 0) })} />
+              <Input type="number" placeholder="Used (t)" value={draft.usedTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, usedTons: Number(e.target.value || 0) })} />
             </div>
             <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as WarehouseT['status'] })}>
               <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
@@ -441,14 +441,14 @@ function AddVessel({ onAdd }: { onAdd: (v: Omit<VesselT, 'id'>) => void }) {
       <DialogContent className="rounded-2xl p-4">
         <DialogHeader><DialogTitle>Add Vessel</DialogTitle></DialogHeader>
         <div className="space-y-3">
-          <Input placeholder="Name" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} />
-          <Input placeholder="Cargo" value={draft.cargo} onChange={(e) => setDraft({ ...draft, cargo: e.target.value })} />
-          <Input type="number" placeholder="Tonnage (t)" value={draft.tonnage} onChange={(e) => setDraft({ ...draft, tonnage: Number(e.target.value || 0) })} />
+          <Input placeholder="Name" value={draft.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, name: e.target.value })} />
+          <Input placeholder="Cargo" value={draft.cargo} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, cargo: e.target.value })} />
+          <Input type="number" placeholder="Tonnage (t)" value={draft.tonnage} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, tonnage: Number(e.target.value || 0) })} />
           <div className="grid grid-cols-2 gap-2">
-            <Input placeholder="ETA Port" value={draft.etaPort} onChange={(e) => setDraft({ ...draft, etaPort: e.target.value })} />
-            <Input type="datetime-local" value={draft.eta?.slice(0,16)} onChange={(e) => setDraft({ ...draft, eta: new Date(e.target.value).toISOString() })} />
+            <Input placeholder="ETA Port" value={draft.etaPort} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, etaPort: e.target.value })} />
+            <Input type="datetime-local" value={draft.eta?.slice(0,16)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, eta: new Date(e.target.value).toISOString() })} />
           </div>
-          <Input placeholder="Last Position" value={draft.lastPosition} onChange={(e) => setDraft({ ...draft, lastPosition: e.target.value })} />
+          <Input placeholder="Last Position" value={draft.lastPosition} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, lastPosition: e.target.value })} />
           <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as VesselT['status'] })}>
             <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
             <SelectContent>
@@ -478,16 +478,16 @@ function EditVessel({ vessel, onSave, onDelete }: { vessel: VesselT; onSave: (v:
         <SheetContent side="bottom" className="rounded-t-3xl p-4 max-h-[80vh] overflow-y-auto">
           <SheetHeader><SheetTitle>Edit Vessel</SheetTitle><SheetDescription>Update status, ETA, and last position.</SheetDescription></SheetHeader>
           <div className="space-y-3 mt-2">
-            <Input placeholder="Name" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} />
+            <Input placeholder="Name" value={draft.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, name: e.target.value })} />
             <div className="grid grid-cols-2 gap-2">
-              <Input placeholder="Cargo" value={draft.cargo} onChange={(e) => setDraft({ ...draft, cargo: e.target.value })} />
-              <Input type="number" placeholder="Tonnage" value={draft.tonnage} onChange={(e) => setDraft({ ...draft, tonnage: Number(e.target.value || 0) })} />
+              <Input placeholder="Cargo" value={draft.cargo} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, cargo: e.target.value })} />
+              <Input type="number" placeholder="Tonnage" value={draft.tonnage} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, tonnage: Number(e.target.value || 0) })} />
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <Input placeholder="ETA Port" value={draft.etaPort} onChange={(e) => setDraft({ ...draft, etaPort: e.target.value })} />
-              <Input type="datetime-local" value={draft.eta?.slice(0,16)} onChange={(e) => setDraft({ ...draft, eta: new Date(e.target.value).toISOString() })} />
+              <Input placeholder="ETA Port" value={draft.etaPort} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, etaPort: e.target.value })} />
+              <Input type="datetime-local" value={draft.eta?.slice(0,16)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, eta: new Date(e.target.value).toISOString() })} />
             </div>
-            <Input placeholder="Last Position" value={draft.lastPosition} onChange={(e) => setDraft({ ...draft, lastPosition: e.target.value })} />
+            <Input placeholder="Last Position" value={draft.lastPosition} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, lastPosition: e.target.value })} />
             <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as VesselT['status'] })}>
               <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
               <SelectContent>
@@ -536,10 +536,10 @@ function SettingsDialog({ open, onOpenChange, auth, user, onSignedIn, onSignedOu
         <DialogHeader><DialogTitle>Settings</DialogTitle></DialogHeader>
         <div className="space-y-3">
           <div className="text-sm text-zinc-700 font-medium flex items-center gap-2"><ShieldCheck className="w-4 h-4"/> Cloud (team-only) uses Google sign-in + Firestore. Leave blank to stay in Demo.</div>
-          <Input placeholder="apiKey" value={apiKey} onChange={(e) => setApiKey(e.target.value)} />
-          <Input placeholder="authDomain" value={authDomain} onChange={(e) => setAuthDomain(e.target.value)} />
-          <Input placeholder="projectId" value={projectId} onChange={(e) => setProjectId(e.target.value)} />
-          <Input placeholder="orgKey (team namespace, e.g. arib)" value={orgKeyInput} onChange={(e) => setOrgKeyInput(e.target.value)} />
+          <Input placeholder="apiKey" value={apiKey} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setApiKey(e.target.value)} />
+          <Input placeholder="authDomain" value={authDomain} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAuthDomain(e.target.value)} />
+          <Input placeholder="projectId" value={projectId} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProjectId(e.target.value)} />
+          <Input placeholder="orgKey (team namespace, e.g. arib)" value={orgKeyInput} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOrgKeyInput(e.target.value)} />
           <div className="flex gap-2 pt-1">
             <Button className="flex-1" onClick={save}><CheckCircle2 className="w-4 h-4 mr-2"/>Save</Button>
             <Button className="flex-1" variant="secondary" onClick={() => onOpenChange(false)}><X className="w-4 h-4 mr-2"/>Close</Button>
