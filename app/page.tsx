@@ -376,7 +376,7 @@ function AddWarehouse({ onAdd }: { onAdd: (w: Omit<WarehouseT, 'id'>) => void })
             <Input type="number" placeholder="Capacity (t)" value={draft.capacityTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, capacityTons: Number(e.target.value || 0) })} />
             <Input type="number" placeholder="Used (t)" value={draft.usedTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, usedTons: Number(e.target.value || 0) })} />
           </div>
-          <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as WarehouseT['status'] })}>
+          <Select value={draft.status} onValueChange={(v: string) => setDraft({ ...draft, status: v as WarehouseT['status'] })}>
             <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
             <SelectContent>
               <SelectItem value="OK">OK</SelectItem>
@@ -410,7 +410,7 @@ function EditWarehouse({ warehouse, onSave, onDelete }: { warehouse: WarehouseT;
               <Input type="number" placeholder="Capacity (t)" value={draft.capacityTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, capacityTons: Number(e.target.value || 0) })} />
               <Input type="number" placeholder="Used (t)" value={draft.usedTons} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, usedTons: Number(e.target.value || 0) })} />
             </div>
-            <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as WarehouseT['status'] })}>
+            <Select value={draft.status} onValueChange={(v: string) => setDraft({ ...draft, status: v as WarehouseT['status'] })}>
               <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
               <SelectContent>
                 <SelectItem value="OK">OK</SelectItem>
@@ -449,7 +449,7 @@ function AddVessel({ onAdd }: { onAdd: (v: Omit<VesselT, 'id'>) => void }) {
             <Input type="datetime-local" value={draft.eta?.slice(0,16)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, eta: new Date(e.target.value).toISOString() })} />
           </div>
           <Input placeholder="Last Position" value={draft.lastPosition} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, lastPosition: e.target.value })} />
-          <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as VesselT['status'] })}>
+          <Select value={draft.status} onValueChange={(v: string) => setDraft({ ...draft, status: v as VesselT['status'] })}>
             <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
             <SelectContent>
               <SelectItem value="At Sea">At Sea</SelectItem>
@@ -488,7 +488,7 @@ function EditVessel({ vessel, onSave, onDelete }: { vessel: VesselT; onSave: (v:
               <Input type="datetime-local" value={draft.eta?.slice(0,16)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, eta: new Date(e.target.value).toISOString() })} />
             </div>
             <Input placeholder="Last Position" value={draft.lastPosition} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraft({ ...draft, lastPosition: e.target.value })} />
-            <Select value={draft.status} onValueChange={(v) => setDraft({ ...draft, status: v as VesselT['status'] })}>
+            <Select value={draft.status} onValueChange={(v: string) => setDraft({ ...draft, status: v as VesselT['status'] })}>
               <SelectTrigger><SelectValue placeholder="Status"/></SelectTrigger>
               <SelectContent>
                 <SelectItem value="At Sea">At Sea</SelectItem>
